@@ -63,6 +63,7 @@ class SplashScreenActivity : AppCompatActivity() {
                 if (fields.has("offer_availableatorfrom")){
                     var offer_availableatorfrom = fields.getString("offer_availableatorfrom")
                     Log.i("offer_availableatorfrom", offer_availableatorfrom)
+                    event.offer_availableatorfrom = offer_availableatorfrom
                 }
 
                 if (fields.has("superevent")){
