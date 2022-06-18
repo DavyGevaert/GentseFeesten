@@ -1,6 +1,5 @@
 package be.gentsefeesten.model
 
-import android.util.Log
 import java.io.Serializable
 
 class Event : Serializable {
