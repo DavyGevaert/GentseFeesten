@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+import be.gentsefeesten.database.DatabaseSchemaHelper
 import be.gentsefeesten.model.Event
 import org.json.JSONArray
 import org.json.JSONTokener
@@ -252,6 +253,12 @@ class SplashScreenActivity : AppCompatActivity() {
                     Log.i("iswheelchairunfriendly", iswheelchairunfriendly)
                     event.iswheelchairunfriendly = iswheelchairunfriendly
                 }
+
+                // aanroepen database en aan variabele toewijzen
+                var db = DatabaseSchemaHelper(this)
+
+                // sla Event object op in database
+                db.insertEventData(event)
             }
         }
     }
