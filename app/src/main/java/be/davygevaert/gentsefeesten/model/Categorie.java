@@ -42,16 +42,16 @@ public class Categorie implements Parcelable {
         this.uuid = uuid;
     }
 
-    public static final Creator<be.davygevaert.gentsefeesten.model.Thema> CREATOR =
-            new Creator<be.davygevaert.gentsefeesten.model.Thema>() {
+    public static final Creator<Categorie> CREATOR =
+            new Creator<Categorie>() {
                 @Override
-                public be.davygevaert.gentsefeesten.model.Thema createFromParcel(Parcel pc) {
-                    return new be.davygevaert.gentsefeesten.model.Thema(pc);
+                public Categorie createFromParcel(Parcel pc) {
+                    return new Categorie(pc);
                 }
 
                 @Override
-                public be.davygevaert.gentsefeesten.model.Thema[] newArray(int size) {
-                    return new be.davygevaert.gentsefeesten.model.Thema[size];
+                public Categorie[] newArray(int size) {
+                    return new Categorie[size];
                 }
             };
 

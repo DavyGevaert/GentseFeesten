@@ -56,7 +56,7 @@ public class Event implements Parcelable {
     private String video_embedurl;
     private String video_thumbnail;
     private String address;
-    private Thema thema;
+    private Categorie categorie;
     private Locatie locatie;
     private Organisator organisator;
 
@@ -454,12 +454,12 @@ public class Event implements Parcelable {
         this.address = address;
     }
 
-    public Thema getThema() {
-        return thema;
+    public Categorie getCategorie() {
+        return categorie;
     }
 
-    public void setThema(Thema thema) {
-        this.thema = thema;
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
     }
 
     public Locatie getLocatie() {
@@ -528,7 +528,7 @@ public class Event implements Parcelable {
         video_embedurl = in.readString();
         video_thumbnail = in.readString();
         address = in.readString();
-        thema = in.readParcelable(Thema.class.getClassLoader());
+        categorie = in.readParcelable(Categorie.class.getClassLoader());
         locatie = in.readParcelable(Locatie.class.getClassLoader());
         organisator = in.readParcelable(Organisator.class.getClassLoader());
     }
@@ -600,7 +600,7 @@ public class Event implements Parcelable {
         dest.writeString(video_embedurl);
         dest.writeString(video_thumbnail);
         dest.writeString(address);
-        dest.writeParcelable(thema, flags);
+        dest.writeParcelable(categorie, flags);
         dest.writeParcelable(locatie, flags);
         dest.writeParcelable(organisator, flags);
     }
