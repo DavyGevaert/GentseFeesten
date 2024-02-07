@@ -20,7 +20,7 @@ public class OrganisatorDB extends SchemaHelper {
         super(context);
     }
 
-    public long addCategorie(Organisator organisator) {
+    public long addOrganisator(Organisator organisator) {
         // AANMAAK VAN EEN CONTENTVALUE OBJECT
         ContentValues cv = new ContentValues();
 

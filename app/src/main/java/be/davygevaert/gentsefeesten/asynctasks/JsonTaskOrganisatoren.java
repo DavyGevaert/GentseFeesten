@@ -17,20 +17,22 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import be.davygevaert.gentsefeesten.databank.CategorieDB;
+import be.davygevaert.gentsefeesten.databank.OrganisatorDB;
 import be.davygevaert.gentsefeesten.model.Categorie;
+import be.davygevaert.gentsefeesten.model.Organisator;
 
 // this asyncTask is made for SDK 23
 // but we are using minimum SDK 26 because it will give an error if we set gradle to minimumSDK 23
-public class JsonTaskCategorieen extends AsyncTask<String, String, String> {
+public class JsonTaskOrganisatoren extends AsyncTask<String, String, String> {
 
-    private CategorieDB categorieDB;
+    private OrganisatorDB organisatorDB;
     private Context context;
 
     private String TAG;
 
     private ProgressDialog pd;
 
-    public JsonTaskCategorieen(Context ctx, ProgressDialog progressDialog)
+    public JsonTaskOrganisatoren(Context ctx, ProgressDialog progressDialog)
     {
         context = ctx;
         pd = progressDialog;
@@ -48,7 +50,7 @@ public class JsonTaskCategorieen extends AsyncTask<String, String, String> {
 
     protected String doInBackground(String... params) {
 
-        categorieDB = new CategorieDB(context);
+        organisatorDB = new OrganisatorDB(context);
 
         HttpURLConnection connection = null;
         BufferedReader reader = null;
@@ -76,14 +78,16 @@ public class JsonTaskCategorieen extends AsyncTask<String, String, String> {
             JsonNode rootArray = mapper.readTree(buffer.toString());
 
             for (JsonNode root : rootArray) {
-                Categorie categorie = new Categorie();
+                Organisator organisator = new Organisator();
 
-                categorie.setId(root.path("id").asText());
-                categorie.setName(root.path("name").asText());
-                categorie.setUuid(root.path("uuid").asText());
+                organisator.setId(root.path("id").asText());
+                organisator.setName(root.path("name").asText());
+                organisator.setMemberOf(root.path("memberof").asText());
+                organisator.setUrl(root.path("url").asText());
+                organisator.setUuid(root.path("uuid").asText());
 
                 // add to database table Event
-                categorieDB.addCategorie(categorie);
+                organisatorDB.addOrganisator(organisator);
             }
 
             return buffer.toString();
